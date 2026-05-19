@@ -183,3 +183,30 @@ function writeText( i, j ) {
         return;
 
 }
+
+/* Modal interaction logic */
+const modal = document.getElementById("infoModal");
+const modalTitle = document.getElementById("modal-title");
+const modalDetail = document.getElementById("modal-detail");
+const closeBtn = document.querySelector(".close-btn");
+
+selectAll(".item").forEach(item => {
+    item.addEventListener("click", () => {
+        const titleEl = item.querySelector(".item-title");
+        if (titleEl) {
+            modalTitle.textContent = titleEl.textContent;
+            modalDetail.textContent = item.getAttribute("data-detail");
+            modal.classList.add("show");
+        }
+    });
+});
+
+closeBtn.addEventListener("click", () => {
+    modal.classList.remove("show");
+});
+
+window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.classList.remove("show");
+    }
+});
