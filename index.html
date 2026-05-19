@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTJ - Personal Introduction</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="heroWrapper">
+        <section id="hero">
+            <a id="heroLink">谭太畯<br>AI产品<br>简历</a>
+        </section>
+    </div>
+
+    <div id="horScrollWrapper1">
+        <section class="horScroll">
+            <div class="animWrap toRight">
+                <div class="item" index="01">AI效率优化为核心发展方向的复合型人才，具备人力资源与行政经验。</div>
+                <div class="item" index="02">将AI工具深度融入实际业务流程，主动设计并落地AI辅助流程。</div>
+                <div class="item" index="03">构建AI报销与信息结构化系统，实现工作效率最高提升约10倍。</div>
+                <div class="item" index="04">具备从0到1拆解流程、设计解决方案并验证效果的落地能力。</div>
+                <div class="item" index="05">对AI产品、Agent系统及企业效率工具方向有明确长期发展规划。</div>
+            </div>
+        </section>
+    </div>
+    <div id="horScrollWrapper2">
+        <section class="horScroll" data-wrapper="#horScrollWrapper2">
+            <div class="animWrap toLeft">
+                <div class="item" index="06">工作经历：四川山有网络科技有限公司（2025.10-2026.04）</div>
+                <div class="item" index="07">负责行政流程管理，引入AI工具进行评估，日处理量提升10倍。</div>
+                <div class="item" index="08">工作经历：重庆汇泰汽车销售有限公司（2024.10-2025.03）</div>
+                <div class="item" index="09">负责招聘流程，搭建AI简历分析系统，提高筛选效率与匹配准确性。</div>
+                <div class="item" index="10">利用AI优化JD与沟通内容，并根据数据反馈调整策略，提升转化率。</div>
+            </div>
+        </section>
+    </div>
+    <div id="horScrollWrapper3">
+        <section class="horScroll" data-horWrapper="#horScrollWrapper3">
+            <div class="animWrap toRight">
+                <div class="item" index="11">核心能力：AI应用 - Prompt设计 / Agent协同 / AI流程自动化。</div>
+                <div class="item" index="12">核心能力：产品思维 - 需求拆解 / 流程优化 / 用户视角。</div>
+                <div class="item" index="13">核心能力：数据执行 - 效率分析 / 结果导向 / 多任务推进。</div>
+                <div class="item" index="14">教育经历：重庆传媒职业学院 | 数字媒体应用技术 | 2022 - 2025</div>
+                <div class="item" index="15">求职意向：AI产品助理 / AI运营 / AI效率优化</div>
+            </div>
+        </section>
+    </div>
+
+    <section id="offer" class="vh100 vp50">
+        <div id="h1Wrapper">
+            <h1 class="sText" sRemove="true">谭太畯</h1>
+            <h1 class="sText">AI产品助理 / AI运营</h1>
+            <p><span class="sText">22岁</span> <span class="sText">数字媒体应用技术</span></p>
+        </div>
+        <main class="cardShape">
+            <p class="email-note">Contact Me<br> tantaijun8@gmail.com</p>
+            <form class="signup">
+                <input type="text" value="15823765804" readonly>
+                <button type="button">Call Me</button>
+            </form>
+            <div class="glow cardShape"></div>
+            <span>Hire<br> Me<br> 2026</span>
+        </main>
+    </section>
+
+    <section id="footer">
+            a <a href="https://codepen.io/challenges/2026/may" target="_blank">CODEPEN challenge</a> by <a href="https://codepen.io/ikrprojects" target="_blank">ikrProjects</a>
+    </section>
+
+    <div id="bgDivWrapper">
+        <div class="bgDivRelative">
+            <div class="treyMix"></div>
+        </div>
+        <div class="bgDivRelative">
+            <div class="treyMix"></div>
+        </div>
+    </div>
+
+    <svg id="noise">
+        <defs>
+            <filter id='noiseFilter'>
+                <feTurbulence type="fractalNoise" baseFrequency="0.6" stitchTiles="stitch" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.3 0 0 0 0" />
+            </filter>
+        </defs>
+        <rect width='100%' height='100%' filter='url(#noiseFilter)' />
+    </svg>
+    <div id="bgBlur"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <!-- Try CodePen's SplitText CDN link -->
+    <script src="https://assets.codepen.io/16327/SplitText3.min.js"></script>
+    
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
