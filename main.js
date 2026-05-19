@@ -1,195 +1,75 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { SplitText } from "gsap/SplitText";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, SplitText);
+gsap.registerPlugin(ScrollTrigger);
 
-let select = (e) => document.querySelector(e);
-let selectAll = (e) => document.querySelectorAll(e);
+// 1. Horizontal Scroll Timeline (Pins wrapper, scrubs canvas left)
+const canvas = document.querySelector(".canvas");
 
-const textDivs = selectAll(".sText");
-const textDivsArray = [
-    textDivs[0].innerHTML,
-    textDivs[1].innerHTML,
-    textDivs[2].innerHTML,
-    textDivs[3].innerHTML
-];
+// Calculate max scroll dynamically based on canvas and viewport width
+let scrollMax = canvas.scrollWidth - window.innerWidth + 200;
 
-let tlHorArray = ["","","",""];
-let splitTextArray = [[],[],[],[]];
-let hasWritten = [false,false,false,false];
-
-
-/* scroll down link to offer section */
-select("#heroLink").addEventListener("click", () => {
-    gsap.to( window, {
-        duration: 3,
-        scrollTo: "#offer",
-        ease: "power2.out"
-    });
+const horizontalTween = gsap.to(canvas, {
+  x: -scrollMax,
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".scroll-wrapper",
+    pin: true,
+    scrub: 1, // Smooth scrubbing
+    end: () => "+=" + scrollMax // Maps 1px of horizontal movement to 1px of vertical scroll
+  }
 });
 
-/* SplitText reveals text on scrollTrigger. */
-/* Product items alternating horizontal scroll */
-/* Hero background image parallax scroll and fadeout */
-/* Repeat setup on resize */
-init();
-addEventListener("resize", (event) => { init() });
-function init() {
-
-    /* reveal text */
-		hasWritten = [false,false,false,false];
-    textDivs.forEach( ( textDiv, i ) => {
-        textDiv.innerHTML = textDivsArray[i];
-        splitTextArray[i] = new SplitText(textDiv, { type:"lines" });
-        gsap.set( splitTextArray[i].lines, { opacity: 0, y: 100, "filter": "blur(10px)", });
-    });
-    gsap.to("body", {
-        scrollTrigger: {
-            trigger: "#offer",
-            start: "top top+=100",
-            scrub: true,
-            onEnter: (self) =>  {
-                if( !hasWritten[0] ) 
-								{
-                	writeText( 0, 0 ); 
-								}
-            }
-        }
-    });
-
-
-    /* horizontal scroll */
-		selectAll(".horScroll").forEach((horScroll, i) => {
-
-        let wrapper = horScroll.dataset.wrapper;
-        if( !wrapper )
-            wrapper = "#"+horScroll.parentNode.id;
-
-				var thisAnimWrap = horScroll.querySelector('.animWrap');
-        var getX = () => {
-            let diff = thisAnimWrap.scrollWidth - window.innerWidth;
-            return - diff;
-        }
-		
-        if( tlHorArray[i] )
-        {
-            tlHorArray[i].kill();
-            tlHorArray[i] = null;
-        }
-        tlHorArray[i] = gsap.fromTo( horScroll,
-        {
-            x: i%2 ? getX() : 0,
-            ease: "sine.inOut"
-        },
-        {
-            x: i%2 ? 0 : getX(),
-            ease: "sine.inOut",
-
-            scrollTrigger: {
-                trigger: wrapper,
-                start: "top top+=50%",/* +=500px */
-                end: "top top+=400px",
-                scrub: 1.5
-            }
-
-        });
-	});
-    
-
-    /* Hero background image parallax scroll and fadeout */
-    if( tlHorArray[3] )
-    {
-        tlHorArray[3].kill();
-        tlHorArray[3] = null;
-    }
-    tlHorArray[3] = gsap.to("body", {
-        scrollTrigger: {
-            trigger: "body",
-            start: "top top",
-            scrub: true,
-            onUpdate: (self) => {
-                let thisProgress = self.progress;
-                let bgVerMovement = window.innerHeight;
-                let bgProgress = parseInt(bgVerMovement * thisProgress) + "px";
-                let bgBrightness= 100 * ( 1 - ( thisProgress * 2 ) ) + "%";
-                gsap.set("body", { "--bgVerticalOffset": bgProgress });
-                gsap.set("body", { "--bgBrightness": bgBrightness });
-            }
-        }
-    });
-
-    if( hasWritten[0] ) 
-        writeText( 0, 0 );
-	
-}
-
-
-
-/* glow border hover */
-const cardWrappers = document.querySelectorAll("main");
-cardWrappers.forEach((cardWrapper,index) => {
-    cardWrapper.addEventListener("mousemove", handleMouseMove);
+// 2. Hide scroll instruction when user begins scrolling
+gsap.to(".scroll-instruction", {
+  opacity: 0,
+  y: 20,
+  scrollTrigger: {
+    trigger: "body",
+    start: "top -50",
+    end: "top -100",
+    scrub: true
+  }
 });
-function handleMouseMove(e) {
-	const cardWrapper = this.getBoundingClientRect();
-	const mouseX = e.clientX - cardWrapper.left - cardWrapper.width / 2;
-	const mouseY = e.clientY - cardWrapper.top - cardWrapper.height / 2;
 
-	let angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI);
-	angle = (angle + 360) % 360;
+// 3. Draw SVG Lines Interactively
+const paths = document.querySelectorAll(".line-path");
+paths.forEach((path) => {
+  const length = path.getTotalLength();
+  // Setup dash array to hide lines initially
+  gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
 
-	this.style.setProperty("--start", angle + 60);
-}
-
-
-/* text reveal recursive function */
-function writeText( i, j ) {
-
-    if( !hasWritten[i] && ( i < 200 ) && ( j < 200 ) )
-    {
-
-        let splitText = splitTextArray[i][j];
-        gsap.timeline({ defaults: { repeatDelay: 0, duration: 0.5, }, onComplete:() => {
-            
-                let nextChar = j + 1;
-                if( splitTextArray[i][nextChar] )
-                    writeText( i,nextChar );
-                else
-                {
-                    hasWritten[i] = true;
-                    let nextLine = i + 1;
-                    if( splitTextArray[nextLine] )
-                    {
-                        let delay = 300;
-                        let remove = textDivs[i].getAttribute("sRemove");
-                        if( remove && ( remove == "true" ) )
-                            delay = 1000;
-                        setTimeout(function () {
-                            let remove = textDivs[i].getAttribute("sRemove");
-                            if( remove && ( remove == "true" ) )
-                                gsap.set( splitTextArray[i].lines, { opacity: 0 });
-                            writeText( nextLine,0 ); 
-                        }, delay);
-                    }
-                    else
-                        return;
-                }
-            
-        } })
-        .to( splitTextArray[i].lines, {
-                opacity: 1,
-								y: 0,
-								"filter": "blur(0px)",
-                stagger: 0.2
-        });
-        
+  // Animate lines drawing in as they enter the screen horizontally
+  gsap.to(path, {
+    strokeDashoffset: 0,
+    ease: "power2.inOut",
+    scrollTrigger: {
+      trigger: path,
+      containerAnimation: horizontalTween,
+      start: "left right-=200",
+      end: "right center",
+      scrub: true
     }
-    else
-        return;
+  });
+});
 
-}
+// 4. Pop-in animations for Cards, Dots, and Buttons
+const revealElements = document.querySelectorAll(".gs-reveal");
+revealElements.forEach((el) => {
+  gsap.from(el, {
+    scale: 0,
+    opacity: 0,
+    rotation: el.classList.contains("plus-btn") ? -90 : 0,
+    duration: 0.8,
+    ease: "back.out(1.4)",
+    scrollTrigger: {
+      trigger: el,
+      containerAnimation: horizontalTween,
+      start: "left right-=150",
+      toggleActions: "play none none reverse"
+    }
+  });
+});
 
 /* Modal interaction logic */
 const modal = document.getElementById("infoModal");
@@ -197,7 +77,7 @@ const modalTitle = document.getElementById("modal-title");
 const modalDetail = document.getElementById("modal-detail");
 const closeBtn = document.querySelector(".close-btn");
 
-selectAll(".item").forEach(item => {
+document.querySelectorAll(".item").forEach(item => {
     item.addEventListener("click", () => {
         const titleEl = item.querySelector(".item-title");
         if (titleEl) {
