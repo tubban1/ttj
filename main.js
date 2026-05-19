@@ -195,7 +195,7 @@ selectAll(".item").forEach(item => {
         const titleEl = item.querySelector(".item-title");
         if (titleEl) {
             modalTitle.textContent = titleEl.textContent;
-            modalDetail.textContent = item.getAttribute("data-detail");
+            modalDetail.innerHTML = item.getAttribute("data-detail");
             modal.classList.add("show");
         }
     });
