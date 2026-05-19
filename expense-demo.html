@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI报销系统 Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="p-6 min-h-screen grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mt-10">
+      <!-- 左侧：上传 -->
+      <div class="col-span-1 bg-white rounded-2xl shadow-sm border border-gray-100">
+        <div class="p-6 space-y-4">
+          <h2 class="text-xl font-semibold text-gray-800">📤 上传发票</h2>
+          <input type="file" class="flex w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-600 file:border-0 file:bg-transparent file:text-sm file:font-medium" />
+          <button class="w-full bg-black text-white hover:bg-gray-800 h-10 rounded-md font-medium transition-colors">AI识别</button>
+          <p class="text-sm text-gray-500">支持拍照/截图自动识别金额与类型</p>
+        </div>
+      </div>
+
+      <!-- 中间：报销填写 -->
+      <div class="col-span-1 bg-white rounded-2xl shadow-sm border border-gray-100">
+        <div class="p-6 space-y-4">
+          <h2 class="text-xl font-semibold text-gray-800">📝 报销信息</h2>
+          <input type="text" placeholder="金额（自动识别）" class="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent" />
+          <input type="text" placeholder="类别（餐饮/交通/办公）" class="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent" />
+          <input type="date" class="flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent" />
+          <textarea placeholder="备注（AI可自动生成）" class="flex min-h-[80px] w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"></textarea>
+          <button class="w-full bg-black text-white hover:bg-gray-800 h-10 rounded-md font-medium transition-colors">提交报销</button>
+        </div>
+      </div>
+
+      <!-- 右侧：AI建议 -->
+      <div class="col-span-1 bg-white rounded-2xl shadow-sm border border-gray-100">
+        <div class="p-6 space-y-4">
+          <h2 class="text-xl font-semibold text-gray-800">🤖 AI助手</h2>
+          <div class="bg-blue-50 border border-blue-100 p-4 rounded-xl text-sm text-blue-800 leading-relaxed">
+            检测到该发票属于“商务餐饮”，建议归类为“客户招待费”。
+          </div>
+          <button class="w-full bg-white text-black border border-gray-300 hover:bg-gray-50 h-10 rounded-md font-medium transition-colors">一键填充</button>
+        </div>
+      </div>
+
+      <!-- 底部：记录 -->
+      <div class="col-span-1 md:col-span-3 bg-white rounded-2xl shadow-sm border border-gray-100">
+        <div class="p-6">
+          <h2 class="text-xl font-semibold mb-6 text-gray-800">📊 报销记录</h2>
+          <div class="overflow-x-auto">
+              <table class="w-full text-sm text-left">
+                <thead class="text-gray-500 bg-gray-50/50">
+                  <tr>
+                    <th class="px-4 py-3 font-medium rounded-l-lg">日期</th>
+                    <th class="px-4 py-3 font-medium">类别</th>
+                    <th class="px-4 py-3 font-medium">金额</th>
+                    <th class="px-4 py-3 font-medium rounded-r-lg">状态</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                  <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-4 py-4 text-gray-600">2026-05-10</td>
+                    <td class="px-4 py-4 text-gray-600">交通</td>
+                    <td class="px-4 py-4 font-medium text-gray-900">¥120</td>
+                    <td class="px-4 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">已通过</span></td>
+                  </tr>
+                  <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-4 py-4 text-gray-600">2026-05-12</td>
+                    <td class="px-4 py-4 text-gray-600">餐饮</td>
+                    <td class="px-4 py-4 font-medium text-gray-900">¥300</td>
+                    <td class="px-4 py-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">审核中</span></td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
