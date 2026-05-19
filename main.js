@@ -1,3 +1,10 @@
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, SplitText);
+
 let select = (e) => document.querySelector(e);
 let selectAll = (e) => document.querySelectorAll(e);
 
