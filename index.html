@@ -12,23 +12,36 @@
     <div class="scroll-wrapper">
       <div class="canvas">
 
-        <svg class="lines-layer" viewBox="0 0 2500 1000">
+        <svg class="lines-layer" viewBox="0 0 2800 1000">
+          <!-- Start to Card 1 -->
           <path class="line-path" d="M 100 500 L 400 500" />
+          
+          <!-- Card 1 to Cards 2,3,4 -->
           <path class="line-path" d="M 640 500 C 750 500, 800 200, 1000 200" />
           <path class="line-path" d="M 640 500 L 1000 500" />
           <path class="line-path" d="M 640 500 C 750 500, 800 800, 1000 800" />
-          <path class="line-path" d="M 1240 500 L 1600 500" />
+          
+          <!-- Cards 2,3,4 to Converge (1400 500) -->
+          <path class="line-path" d="M 1240 200 C 1300 200, 1350 500, 1400 500" />
+          <path class="line-path" d="M 1240 500 L 1400 500" />
+          <path class="line-path" d="M 1240 800 C 1300 800, 1350 500, 1400 500" />
+
+          <!-- Converge to Work Exp 1 & 2 -->
+          <path class="line-path" d="M 1400 500 C 1500 500, 1550 350, 1600 350" />
+          <path class="line-path" d="M 1400 500 C 1500 500, 1550 650, 1600 650" />
+
+          <!-- Work Exp 1 & 2 to Long Term (Card 7) -->
+          <path class="line-path" d="M 1840 350 C 1950 350, 2050 500, 2200 500" />
+          <path class="line-path" d="M 1840 650 C 1950 650, 2050 500, 2200 500" />
         </svg>
 
         <div class="clay-element connector-dot gs-reveal" style="left: 100px; top: 500px;"></div>
         <div class="clay-element plus-btn gs-reveal" style="left: 250px; top: 500px;">+</div>
-
         <div class="clay-element connector-dot gs-reveal" style="left: 400px; top: 500px;"></div>
 
         <!-- 1. 复合型AI人才 -->
         <div class="clay-element card gs-reveal item" style="left: 520px; top: 500px;" data-detail="<p>我是一名以<strong>AI效率优化</strong>为核心发展方向的复合型人才。</p><p>不仅具备扎实的技术落地与产品思维，还拥有丰富的人力资源与行政管理经验。我深知企业实际业务痛点，能够将技术解决方案无缝衔接至日常运营，致力于通过AI重塑组织效率。</p>">
           <div class="card-video-wrap">
-            <div class="overlay" style="background: rgba(220, 53, 69, 0.75);"></div>
             <img class="thumbnail" src="/assets/7872de61-a4ea-47cc-aa59-5cbffb4a1a7a.png" alt="复合型AI人才">
             <div class="header-badges">
               <div class="badge-group">
@@ -46,16 +59,19 @@
 
         <div class="clay-element connector-dot gs-reveal" style="left: 640px; top: 500px;"></div>
 
+        <!-- Buttons before 2,3,4 -->
         <div class="clay-element plus-btn gs-reveal" style="left: 790px; top: 350px;">+</div>
         <div class="clay-element plus-btn gs-reveal" style="left: 820px; top: 500px;">+</div>
         <div class="clay-element plus-btn gs-reveal" style="left: 790px; top: 650px;">+</div>
 
+        <!-- Input dots for 2, 3, 4 -->
         <div class="clay-element connector-dot gs-reveal" style="left: 1000px; top: 200px;"></div>
+        <div class="clay-element connector-dot gs-reveal" style="left: 1000px; top: 500px;"></div>
+        <div class="clay-element connector-dot gs-reveal" style="left: 1000px; top: 800px;"></div>
         
         <!-- 2. 业务融合 -->
         <div class="clay-element card gs-reveal item" style="left: 1120px; top: 200px;" data-detail="<p>专注于将AI工具<strong>深度融入实际业务流程</strong>。</p><ul><li style='margin-bottom:8px'>主动挖掘业务瓶颈，设计切实可行的AI辅助流程。</li><li style='margin-bottom:8px'>打通从概念验证(PoC)到规模化落地的全链路。</li><li>持续监控AI系统运行效果，以数据驱动迭代优化。</li></ul>">
           <div class="card-video-wrap">
-            <div class="overlay" style="background: rgba(46, 204, 113, 0.75);"></div>
             <img class="thumbnail" src="/assets/ai_tech_abstract.png" alt="业务融合">
             <div class="header-badges">
               <div class="badge-group">
@@ -70,13 +86,10 @@
             <span>点击查看详情</span>
           </div>
         </div>
-
-        <div class="clay-element connector-dot gs-reveal" style="left: 1000px; top: 500px;"></div>
         
         <!-- 3. 效率提升10倍 -->
         <div class="clay-element card gs-reveal item" style="left: 1120px; top: 500px;" data-detail="<p><strong>核心成就：构建AI报销与信息结构化系统</strong></p><p>传统报销流程繁琐且易出错。我主导设计并实施了基于AI的自动信息提取与结构化处理系统：</p><ul><li style='margin-bottom:8px'>实现对复杂票据和非结构化数据的精准解析。</li><li style='margin-bottom:8px'>将人工审批时间缩短了近90%。</li><li>工作效率最高实现约<strong>10倍</strong>的惊人提升。</li></ul><a href='./expense-demo.html' target='_blank' style='display:inline-block; margin-top:15px; padding:8px 16px; background-color:#2d3436; color:#fff; border-radius:6px; text-decoration:none; font-weight:bold;'>👉 查看 Demo</a>">
           <div class="card-video-wrap">
-            <div class="overlay" style="background: rgba(108, 92, 231, 0.75);"></div>
             <img class="thumbnail" src="/assets/expense-demo-screenshot.png" alt="效率提升10倍">
             <div class="header-badges">
               <div class="badge-group">
@@ -91,13 +104,10 @@
             <span>点击查看详情</span>
           </div>
         </div>
-
-        <div class="clay-element connector-dot gs-reveal" style="left: 1000px; top: 800px;"></div>
         
         <!-- 4. 落地能力 -->
         <div class="clay-element card gs-reveal item" style="left: 1120px; top: 800px;" data-detail="<p>具备强大的<strong>从0到1解决方案落地能力</strong>：</p><ul><li style='margin-bottom:8px'><strong>流程拆解：</strong>精准剖析复杂业务，识别可AI化的关键节点。</li><li style='margin-bottom:8px'><strong>方案设计：</strong>结合前沿AI技术与实际场景，量身定制解决方案。</li><li><strong>效果验证：</strong>建立科学的数据评估体系，确保落地成果可衡量、可复制。</li></ul>">
           <div class="card-video-wrap">
-            <div class="overlay" style="background: rgba(52, 152, 219, 0.75);"></div>
             <img class="thumbnail" src="/assets/ai_workspace.png" alt="落地能力">
             <div class="header-badges">
               <div class="badge-group">
@@ -113,15 +123,67 @@
           </div>
         </div>
 
+        <!-- Output dots for 2,3,4 -->
+        <div class="clay-element connector-dot gs-reveal" style="left: 1240px; top: 200px;"></div>
         <div class="clay-element connector-dot gs-reveal" style="left: 1240px; top: 500px;"></div>
-        <div class="clay-element plus-btn gs-reveal" style="left: 1420px; top: 500px;">+</div>
+        <div class="clay-element connector-dot gs-reveal" style="left: 1240px; top: 800px;"></div>
 
-        <div class="clay-element connector-dot gs-reveal" style="left: 1600px; top: 500px;"></div>
-        
-        <!-- 5. 长期规划 -->
-        <div class="clay-element card gs-reveal item" style="left: 1720px; top: 500px;" data-detail="<p>对AI行业有深入洞察与<strong>明确的长期发展规划</strong>：</p><p>致力于在<strong>AI产品、Agent协同系统及企业效率工具</strong>领域深耕。我坚信未来企业将由智能体(Agent)网络驱动，期望在这一变革中扮演关键角色，推动产品向智能化、自动化方向演进。</p>">
+        <!-- Converge dot -->
+        <div class="clay-element connector-dot gs-reveal" style="left: 1400px; top: 500px;"></div>
+        <div class="clay-element plus-btn gs-reveal" style="left: 1500px; top: 500px;">+</div>
+
+        <!-- Input dots for Work Exp 1, 2 -->
+        <div class="clay-element connector-dot gs-reveal" style="left: 1600px; top: 350px;"></div>
+        <div class="clay-element connector-dot gs-reveal" style="left: 1600px; top: 650px;"></div>
+
+        <!-- 5. 工作经历 1 -->
+        <div class="clay-element card gs-reveal item" style="left: 1720px; top: 350px;" data-detail="<p><strong>四川山有网络科技有限公司 (2025.10 - 2026.04)</strong></p><p>负责行政流程管理，并引入AI工具进行流程评估与优化：</p><ul><li>构建AI报销处理系统，实现信息自动整理与审核辅助，日处理量由20+提升至200+。</li><li>通过Agent逻辑拆解报销流程，实现标准化与自动化处理。</li><li>输出结构化流程文档，降低错误率并提升整体效率。</li></ul>">
           <div class="card-video-wrap">
-            <div class="overlay" style="background: rgba(232, 67, 147, 0.75);"></div>
+            <!-- Using unsplash image for work exp -->
+            <img class="thumbnail" src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400&q=80" alt="工作经历1">
+            <div class="header-badges">
+              <div class="badge-group">
+                <span class="badge" style="background: #2d3436;">工作经历</span>
+              </div>
+              <div class="badge icon">🏢</div>
+            </div>
+            <div class="title item-title">山有网络科技</div>
+          </div>
+          <div class="card-stats">
+            <span>点击查看详情</span>
+          </div>
+        </div>
+
+        <!-- 6. 工作经历 2 -->
+        <div class="clay-element card gs-reveal item" style="left: 1720px; top: 650px;" data-detail="<p><strong>重庆汇泰汽车销售有限公司 (2024.10 - 2025.03)</strong></p><p>负责招聘流程管理，并引入AI进行简历分析与岗位匹配：</p><ul><li>搭建个人AI简历分析系统，提高筛选效率与匹配准确性。</li><li>利用AI优化JD与沟通内容，提高候选人转化率。</li><li>根据数据反馈调整招聘策略，提升招聘效率。</li></ul>">
+          <div class="card-video-wrap">
+            <img class="thumbnail" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400&q=80" alt="工作经历2">
+            <div class="header-badges">
+              <div class="badge-group">
+                <span class="badge" style="background: #2d3436;">工作经历</span>
+              </div>
+              <div class="badge icon">🏢</div>
+            </div>
+            <div class="title item-title">汇泰汽车销售</div>
+          </div>
+          <div class="card-stats">
+            <span>点击查看详情</span>
+          </div>
+        </div>
+
+        <!-- Output dots for Work Exp 1, 2 -->
+        <div class="clay-element connector-dot gs-reveal" style="left: 1840px; top: 350px;"></div>
+        <div class="clay-element connector-dot gs-reveal" style="left: 1840px; top: 650px;"></div>
+
+        <!-- Plus button before Long term -->
+        <div class="clay-element plus-btn gs-reveal" style="left: 2000px; top: 500px;">+</div>
+
+        <!-- Input dot for Long term -->
+        <div class="clay-element connector-dot gs-reveal" style="left: 2200px; top: 500px;"></div>
+        
+        <!-- 7. 长期规划 -->
+        <div class="clay-element card gs-reveal item" style="left: 2320px; top: 500px;" data-detail="<p>对AI行业有深入洞察与<strong>明确的长期发展规划</strong>：</p><p>致力于在<strong>AI产品、Agent协同系统及企业效率工具</strong>领域深耕。我坚信未来企业将由智能体(Agent)网络驱动，期望在这一变革中扮演关键角色，推动产品向智能化、自动化方向演进。</p>">
+          <div class="card-video-wrap">
             <img class="thumbnail" src="/assets/data_flow.png" alt="长期规划">
             <div class="header-badges">
               <div class="badge-group">
@@ -136,6 +198,10 @@
             <span>点击查看详情</span>
           </div>
         </div>
+
+        <!-- End dot -->
+        <div class="clay-element connector-dot gs-reveal" style="left: 2440px; top: 500px;"></div>
+        <div class="clay-element plus-btn gs-reveal" style="left: 2550px; top: 500px;">+</div>
 
       </div>
     </div>
